@@ -127,6 +127,7 @@ export default function Page() {
               <BlurFade
                 key={project.title}
                 delay={BLUR_FADE_DELAY * 12 + id * 0.05}
+                className="flex flex-col h-full"
               >
                 <FeaturedProjectCard
                   href={project.href}

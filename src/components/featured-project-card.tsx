@@ -29,7 +29,7 @@ export const FeaturedProjectCard = ({
     links,
 }: FeaturedProjectCardProps) => {
     return (
-        <div className="group flex flex-col rounded-2xl border border-border bg-background overflow-hidden card-hover glow-green">
+        <div className="group flex flex-col h-full rounded-2xl border border-border bg-background overflow-hidden card-hover glow-green">
             {/* Project Image/Video */}
             <div className="relative aspect-[16/10] w-full overflow-hidden bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-orange-500/20">
                 {video ? (
@@ -124,11 +124,7 @@ export const FeaturedProjectCard = ({
                 </div>
 
                 {/* Footer */}
-                <div className="flex items-center justify-between mt-auto pt-4 border-t border-border/50">
-                    <div className="flex items-center gap-2">
-                        <span className="size-2.5 rounded-full bg-green-500 animate-pulse"></span>
-                        <span className="text-xs font-medium text-muted-foreground">All Systems Operational</span>
-                    </div>
+                <div className="flex items-center justify-end mt-auto pt-4 border-t border-border/50">
                     {href && (
                         <Link
                             href={href}
