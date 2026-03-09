@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import { FileText } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import { GitHubCalendarComponent } from "@/components/github-calendar-component";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -163,11 +165,8 @@ export default function Page() {
 
           <BlurFade delay={BLUR_FADE_DELAY * 14}>
             <div className="border border-border rounded-2xl p-8 bg-background overflow-hidden">
-              {/* Header */}
-              <div className="flex items-center justify-between mb-8">
-                <p className="text-base text-muted-foreground">
-                  Total: <span className="font-bold text-foreground text-lg">1,200+</span> contributions
-                </p>
+              {/* Header Status */}
+              <div className="flex items-center justify-end mb-4">
                 <div className="flex items-center gap-3 text-sm text-muted-foreground">
                   <span className="size-2.5 rounded-full bg-green-500 animate-pulse"></span>
                   <span className="font-medium">Active</span>
@@ -176,29 +175,9 @@ export default function Page() {
                 </div>
               </div>
 
-              {/* Contribution Graph - Scaled up for bigger squares */}
-              <div className="overflow-x-auto py-4">
-                <div className="transform scale-150 origin-left">
-                  <img
-                    src={`https://ghchart.rshah.org/22c55e/${DATA.githubUsername}`}
-                    alt={`${DATA.githubUsername}'s GitHub Contribution Graph`}
-                    className="h-auto"
-                    style={{ imageRendering: 'pixelated' }}
-                  />
-                </div>
-              </div>
-
-              {/* Legend */}
-              <div className="flex items-center justify-end gap-3 mt-6 pt-4 border-t border-border/50">
-                <span className="text-sm text-muted-foreground font-medium">Less</span>
-                <div className="flex gap-1.5">
-                  <span className="size-4 rounded bg-gray-200 dark:bg-gray-700"></span>
-                  <span className="size-4 rounded bg-green-200"></span>
-                  <span className="size-4 rounded bg-green-400"></span>
-                  <span className="size-4 rounded bg-green-500"></span>
-                  <span className="size-4 rounded bg-green-700"></span>
-                </div>
-                <span className="text-sm text-muted-foreground font-medium">More</span>
+              {/* Contribution Graph */}
+              <div className="overflow-x-auto py-2">
+                <GitHubCalendarComponent username={DATA.githubUsername} />
               </div>
             </div>
           </BlurFade>
@@ -216,88 +195,52 @@ export default function Page() {
           </BlurFade>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {/* Blog Card 1 */}
-            <BlurFade delay={BLUR_FADE_DELAY * 16}>
-              <Link href="/blog" className="block group">
-                <div className="border border-border rounded-2xl overflow-hidden bg-background hover:shadow-lg transition-all duration-300">
-                  {/* Image */}
-                  <div className="aspect-[16/10] w-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
-                    <span className="text-3xl font-bold text-foreground/20">VLM Guide</span>
-                  </div>
-                  {/* Content */}
-                  <div className="p-5 space-y-3">
-                    <h3 className="font-bold text-lg text-foreground group-hover:text-foreground/80 transition-colors leading-tight">
-                      What are Vision Language Models?
-                    </h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2">
-                      Understanding VLMs, resources and how to get started with multimodal AI.
-                    </p>
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2">
-                      <Badge variant="secondary" className="text-xs font-medium">AI/ML</Badge>
-                      <Badge variant="secondary" className="text-xs font-medium">VLM</Badge>
+            {DATA.blogs.map((blog, idx) => (
+              <BlurFade key={blog.title} delay={BLUR_FADE_DELAY * 16 + idx * 0.05}>
+                <Link href={blog.url} target="_blank" rel="noopener noreferrer" className="block group">
+                  <div className="border border-border rounded-2xl overflow-hidden bg-background hover:shadow-lg transition-all duration-300 h-full flex flex-col">
+                    {/* Image */}
+                    <div className="aspect-[16/10] w-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center relative overflow-hidden shrink-0">
+                      {blog.image && (blog.image.startsWith('/') || blog.image.startsWith('http')) ? (
+                        <Image src={blog.image} alt={blog.title} fill className="object-cover" />
+                      ) : (
+                        <span className="text-3xl font-bold text-foreground/20 z-10">{blog.image}</span>
+                      )}
                     </div>
-                    {/* Footer */}
-                    <div className="flex items-center justify-between pt-2">
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="2" />
-                          <line x1="16" y1="2" x2="16" y2="6" strokeWidth="2" />
-                          <line x1="8" y1="2" x2="8" y2="6" strokeWidth="2" />
-                          <line x1="3" y1="10" x2="21" y2="10" strokeWidth="2" />
-                        </svg>
-                        <span>December 15, 2024</span>
+                    {/* Content */}
+                    <div className="p-5 space-y-3 flex flex-col flex-1">
+                      <h3 className="font-bold text-lg text-foreground group-hover:text-foreground/80 transition-colors leading-tight">
+                        {blog.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground line-clamp-2">
+                         {blog.description}
+                      </p>
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-2">
+                        {blog.tags.map((tag) => (
+                           <Badge key={tag} variant="secondary" className="text-xs font-medium">{tag}</Badge>
+                        ))}
                       </div>
-                      <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors flex items-center gap-1">
-                        Read More <span>→</span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </BlurFade>
-
-            {/* Blog Card 2 */}
-            <BlurFade delay={BLUR_FADE_DELAY * 17}>
-              <Link href="/blog" className="block group">
-                <div className="border border-border rounded-2xl overflow-hidden bg-background hover:shadow-lg transition-all duration-300">
-                  {/* Image */}
-                  <div className="aspect-[16/10] w-full bg-gradient-to-br from-purple-100 to-blue-200 dark:from-purple-900 dark:to-blue-900 flex items-center justify-center">
-                    <span className="text-3xl font-bold text-foreground/20">AI Agents</span>
-                  </div>
-                  {/* Content */}
-                  <div className="p-5 space-y-3">
-                    <h3 className="font-bold text-lg text-foreground group-hover:text-foreground/80 transition-colors leading-tight">
-                      Building AI Agents with LangChain
-                    </h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2">
-                      Learn how to create powerful AI agents that reason, plan, and execute tasks.
-                    </p>
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2">
-                      <Badge variant="secondary" className="text-xs font-medium">Python</Badge>
-                      <Badge variant="secondary" className="text-xs font-medium">LangChain</Badge>
-                      <Badge variant="secondary" className="text-xs font-medium">Agents</Badge>
-                    </div>
-                    {/* Footer */}
-                    <div className="flex items-center justify-between pt-2">
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="2" />
-                          <line x1="16" y1="2" x2="16" y2="6" strokeWidth="2" />
-                          <line x1="8" y1="2" x2="8" y2="6" strokeWidth="2" />
-                          <line x1="3" y1="10" x2="21" y2="10" strokeWidth="2" />
-                        </svg>
-                        <span>November 28, 2024</span>
+                      {/* Footer */}
+                      <div className="flex items-center justify-between pt-2 mt-auto">
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                          <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="2" />
+                            <line x1="16" y1="2" x2="16" y2="6" strokeWidth="2" />
+                            <line x1="8" y1="2" x2="8" y2="6" strokeWidth="2" />
+                            <line x1="3" y1="10" x2="21" y2="10" strokeWidth="2" />
+                          </svg>
+                          <span>{blog.date}</span>
+                        </div>
+                        <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors flex items-center gap-1">
+                          Read on Dev.to <span>→</span>
+                        </span>
                       </div>
-                      <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors flex items-center gap-1">
-                        Read More <span>→</span>
-                      </span>
                     </div>
                   </div>
-                </div>
-              </Link>
-            </BlurFade>
+                </Link>
+              </BlurFade>
+            ))}
           </div>
 
           {/* Show all blogs button */}

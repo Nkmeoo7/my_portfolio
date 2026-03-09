@@ -10,9 +10,8 @@ export const DATA = {
   description:
     "Building Solutions that can scale, thinging small problems at large scale",
   summary:
-    "Through me problems, i will be the one who will making sure it can break things and mature by the time",
+    "I am a software developer, love building scalable and efficient solutions.currently exploring how AI with systems can help us in solving real world problems.",
   avatarUrl: "/me.png",
-  // 👇 UPDATE THIS WITH YOUR GITHUB USERNAME
   githubUsername: "Nkmeoo7",
   skills: [
     "React",
@@ -66,94 +65,161 @@ export const DATA = {
         name: "Send Email",
         url: "#",
         icon: Icons.email,
-
         navbar: false,
+      },
+      Vlog: {
+        name: "Vlog",
+        url: "https://dev.to/nitinoo7/basic-prompt-engineering-skills-that-everyone-should-have-2021",
+        icon: NotebookIcon,
+        navbar: true,
       },
     },
   },
 
   work: [
     {
-      company: "AI Startup",
-      href: "#",
-      badges: [],
-      location: "Remote",
-      title: "AI/ML Intern",
-      logoUrl: "/ai-startup.png",
-      start: "June 2024",
-      end: "Present",
-      description:
-        "Working on building and deploying Vision-Language Models. Developing AI agents and fine-tuning large language models for production use cases.",
-    },
-    {
       company: "Freelance",
       badges: [],
       href: "#",
       location: "Remote",
       title: "AI Developer",
-      logoUrl: "/freelance.png",
-      start: "January 2024",
-      end: "May 2024",
+      logoUrl: "/freelanc.jpeg",
+      start: "January 2026",
+      end: "Present",
       description:
-        "Built custom AI solutions for clients including chatbots, document processing systems, and automation tools using Python, LangChain, and OpenAI APIs.",
+        "Built custom ecommerce application for a client using flutter, express and node js implemented better system for uploading products from admin side",
     },
+    {
+      company: "OctaNet",
+      href: "#",
+      badges: [],
+      location: "Remote",
+      title: "AI/ML Intern",
+      logoUrl: "/octa.jpeg",
+      start: "Oct 2025",
+      end: "Dec 2025",
+      description:
+        "Here we got exposure about how to build RAG system and how to fine tune models for production use cases",
+    },
+
+  ],
+  blogs: [
+    {
+      title: "Basic prompt engineering skills that everyone should have",
+      description: "A beginner's guide to prompt engineering. Learn the fundamentals of how to talk to AI.",
+      url: "https://dev.to/nitinoo7/basic-prompt-engineering-skills-that-everyone-should-have-2021",
+      date: "2024",
+      tags: ["AI/ML", "Prompt Engineering"],
+      image: "/image.png"
+    }
   ],
   projects: [
     {
-      title: "omoyari",
-      href: "https://chatcollect.com",
-      dates: "Jan 2025 - Feb 2025",
+      title: "Omoyari",
+      href: "https://github.com/Nkmeoo7/Omoyari",
+      dates: "Building",
       active: true,
-      description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Stripe",
-        "Shadcn UI",
-        "Magic UI",
+      description: "An AI-powered emotional journaling application where users can document their thoughts and receive personalized insights.",
+      technologies: ["React", "Next.js"],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/Nkmeoo7/Omoyari",
+          icon: <Icons.github className="size-3" />,
+        },
       ],
+      image: "/omoyari.jpg",
+      video: "",
+    },
+
+    {
+      title: "ChatAll",
+      href: "https://chatall-jufq.onrender.com",
+      dates: "2024",
+      active: true,
+      description: "A chat platform featuring user registration and global real-time messaging capabilities for all participants.",
+      technologies: ["React", "Node.js", "Express", "MongoDB"],
       links: [
         {
           type: "Website",
-          href: "https://chatcollect.com",
+          href: "https://chatall-jufq.onrender.com",
           icon: <Icons.globe className="size-3" />,
         },
+        {
+          type: "Source",
+          href: "https://github.com/Nkmeoo7/ChatAll",
+          icon: <Icons.github className="size-3" />,
+        },
       ],
-      image: "",
-      video:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
+      image: "/app.jpg",
+      video: "",
     },
     {
-      title: "omoyari",
-      href: "https://chatcollect.com",
-      dates: "Jan 2025 - Feb 2025",
+      title: "Simple Chat App",
+      href: "https://simple-chat-app-frontend-mu.vercel.app",
+      dates: "2024",
       active: true,
-      description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Stripe",
-        "Shadcn UI",
-        "Magic UI",
-      ],
+      description: "A real-time communication platform, users can create custom rooms and chat seamlessly using WebSockets.",
+      technologies: ["React", "TailwindCSS", "Socket.io"],
       links: [
         {
           type: "Website",
-          href: "https://chatcollect.com",
+          href: "https://simple-chat-app-frontend-mu.vercel.app",
           icon: <Icons.globe className="size-3" />,
         },
+        {
+          type: "Source",
+          href: "https://github.com/Nkmeoo7/Simple-chat-app-frontend",
+          icon: <Icons.github className="size-3" />,
+        },
       ],
-      image: "",
-      video:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
+      image: "/chatroom.png",
+      video: "",
     },
+    {
+      title: "Sol-Dapp",
+      href: "https://sol-dapp-one.vercel.app",
+      dates: "2024",
+      active: true,
+      description: "A Web3 decentralized application on Solana with wallet integration, balance checking, and SOL airdrop functionalities.",
+      technologies: ["Solana", "Web3.js", "React", "Next.js"],
+      links: [
+        {
+          type: "Website",
+          href: "https://sol-dapp-one.vercel.app",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/Nkmeoo7/Sol-Dapp",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/soldapp.jpg",
+      video: "",
+    },
+    {
+      title: "Web3 Wallet",
+      href: "https://nkmeoo7.github.io/web3_wallet/",
+      dates: "2024",
+      active: true,
+      description: "A secure web-based crypto wallet that generates mnemonic phrases to create and manage Ethereum and Solana addresses.",
+      technologies: ["Web3.js", "React"],
+      links: [
+        {
+          type: "Website",
+          href: "https://nkmeoo7.github.io/web3_wallet/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/Nkmeoo7/web3_wallet",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/web3all.png",
+      video: "",
+    },
+
   ],
 } as const;

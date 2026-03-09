@@ -59,7 +59,28 @@ export const FeaturedProjectCard = ({
             <div className="flex flex-col p-5 flex-1">
                 {/* Title with icons */}
                 <div className="flex items-start justify-between gap-3 mb-3">
-                    <h3 className="font-bold text-lg text-foreground leading-tight">{title}</h3>
+                    <div className="flex items-center gap-3">
+                        <h3 className="font-bold text-lg text-foreground leading-tight">{title}</h3>
+                        <div className="flex items-center gap-1.5">
+                            {links?.some((l) => l.type.toLowerCase() === "website") ? (
+                                <>
+                                    <span className="relative flex size-2">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full size-2 bg-green-500"></span>
+                                    </span>
+                                    <span className="text-xs font-medium text-muted-foreground">Live</span>
+                                </>
+                            ) : (
+                                <>
+                                    <span className="relative flex size-2">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full size-2 bg-red-500"></span>
+                                    </span>
+                                    <span className="text-xs font-medium text-muted-foreground">Building</span>
+                                </>
+                            )}
+                        </div>
+                    </div>
                     <div className="flex items-center gap-3 flex-shrink-0">
                         {links?.map((link, idx) => (
                             <Link
@@ -115,8 +136,7 @@ export const FeaturedProjectCard = ({
                             rel="noopener noreferrer"
                             className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group/link"
                         >
-                            View Details
-                            <ArrowRight className="size-4 group-hover/link:translate-x-0.5 transition-transform" />
+                            {links?.some((l) => l.type.toLowerCase() === "website") ? "Visit Site ->" : "View Source ->"}
                         </Link>
                     )}
                 </div>
