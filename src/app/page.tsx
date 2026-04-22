@@ -21,7 +21,7 @@ export default function Page() {
             <div className="flex-col flex flex-1 space-y-4">
               {/* Name with gradient effect on hover */}
               <BlurFade delay={BLUR_FADE_DELAY}>
-                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-purple-600 hover:via-pink-500 hover:to-orange-400 transition-all duration-500 cursor-default">
+                <h1 className="text-3xl sm:text-4xl font-bold tracking-tight md:text-5xl bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-purple-600 hover:via-pink-500 hover:to-orange-400 transition-all duration-500 cursor-default">
                   {DATA.name}
                 </h1>
               </BlurFade>
@@ -60,7 +60,7 @@ export default function Page() {
             {/* Avatar with floating animation */}
             <BlurFade delay={BLUR_FADE_DELAY}>
               <div className="animate-float">
-                <Avatar className="size-32 border-2 border-border rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                <Avatar className="size-20 sm:size-28 md:size-32 border-2 border-border rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
                   <AvatarImage alt={DATA.name} src={DATA.avatarUrl} className="object-cover" />
                   <AvatarFallback className="rounded-2xl text-2xl">{DATA.initials}</AvatarFallback>
                 </Avatar>
@@ -265,14 +265,14 @@ export default function Page() {
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 17}>
           <div className="border border-border rounded-xl p-4 bg-background">
-            <div className="flex items-start justify-between">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <h3 className="font-semibold text-foreground">Kamla Nehru Institude of Technology</h3>
                 <p className="text-sm text-muted-foreground font-mono mt-1">
                   Bachelor&apos;s Electronics and Communication
                 </p>
               </div>
-              <span className="text-sm text-muted-foreground font-mono">
+              <span className="text-sm text-muted-foreground font-mono sm:ml-4 flex-shrink-0">
                 2022 - 2026
               </span>
             </div>
@@ -283,7 +283,7 @@ export default function Page() {
       {/* Contact Section */}
       <section id="contact">
         <BlurFade delay={BLUR_FADE_DELAY * 19}>
-          <div className="relative rounded-2xl p-8 md:p-12 text-center overflow-hidden bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-orange-500/10 border border-border/50">
+          <div className="relative rounded-2xl p-5 sm:p-8 md:p-12 text-center overflow-hidden bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-orange-500/10 border border-border/50">
             {/* Decorative gradient blob */}
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-pink-500/5 pointer-events-none"></div>
 

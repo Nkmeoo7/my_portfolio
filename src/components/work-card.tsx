@@ -45,8 +45,9 @@ export const WorkCard = ({
 
                 {/* Content */}
                 <div className="flex-1 min-w-0">
-                    <div className="flex items-start justify-between gap-4">
-                        <div className="flex-1">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-4">
+                        {/* Company + Title */}
+                        <div className="flex-1 min-w-0">
                             <h3 className="font-semibold text-foreground group-hover:text-foreground/80 transition-colors">
                                 {company}
                             </h3>
@@ -54,8 +55,9 @@ export const WorkCard = ({
                                 {title}
                             </p>
                         </div>
-                        <div className="flex flex-col items-end gap-1 flex-shrink-0">
-                            <span className="text-sm text-muted-foreground font-mono">
+                        {/* Period + Badge — below on mobile, right on desktop */}
+                        <div className="flex items-center gap-2 sm:flex-col sm:items-end sm:gap-1 flex-shrink-0">
+                            <span className="text-xs text-muted-foreground font-mono">
                                 {period}
                             </span>
                             <Badge variant="secondary" className="text-xs font-mono">

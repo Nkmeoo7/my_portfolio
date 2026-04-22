@@ -76,6 +76,29 @@
   }
 }
 
+/* Hide scrollbar but keep scroll functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Safe-area insets for notched phones (iPhone X+) */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  body {
+    padding-bottom: calc(8rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* Improve tap targets on mobile */
+@media (max-width: 640px) {
+  a, button {
+    touch-action: manipulation;
+  }
+}
+
 /* Custom Animations */
 @keyframes float {
 
